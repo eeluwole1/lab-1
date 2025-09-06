@@ -2,8 +2,8 @@ const EMPLOYEE_DATA_URL = "./employees.json";
 
 /**
  * Populate the Employee Directory
- * @param {HTMLElement} mountNode - container element where the directory goes
- * @param {{department:string; employees:string[]}[]} departments - data from JSON
+ * @param {HTMLElement} mountNode
+ * @param {{department:string; employees:string[]}[]} departments
  */
 const populateDirectory = (mountNode, departments) => {
   // clear any existing/placeholder content
