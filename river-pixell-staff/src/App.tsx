@@ -1,8 +1,8 @@
 import "./index.css";
-import Nav from "./nav/Nav";
-import HeaderBar from "./header/Header";
+import Nav from "./components/nav/Nav";
+import HeaderBar from "./components/header/Header";
 import EmployeeList from "./components/employee-list/EmployeeList";
-import Footer from "./footer/Footer";
+import Footer from "./components/footer/Footer";
 
 export default function App() {
   return (
