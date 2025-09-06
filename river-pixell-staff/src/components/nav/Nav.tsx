@@ -1,10 +1,10 @@
-import logo from "../assets/rplogo.png";
+import logo from "../../assets/rplogo.png";
 
 export default function Nav() {
   return (
     <nav aria-label="Primary">
       <div className="nav-left">
-        <img src={logo} alt="Pixell River Logo" />
+        <img src={logo} alt="Pixell River logo" />
       </div>
       <div className="nav-links">
         <a href="#">Employees</a>
