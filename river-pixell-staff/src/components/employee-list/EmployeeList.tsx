@@ -1,42 +1,45 @@
-import raw from "../../assets/employee.json";
+import employeesJson from "../../data/employees.json";
 
-type Department = { department: string; employees: string[] };
+interface EmployeeDepartment {
+  department: string;
+  employees: string[];
+}
 
-const ORDER = [
-  "Administration",
-  "Audit",
-  "Banking Operations",
-  "Communications",
-  "Corporate Services",
-  "Facilities",
-  "Financial Services",
-  "Human Resources",
-  "Information Technology"
-];
+export function EmployeeList() {
+  const departmentsEmployees = new Array<EmployeeDepartment>();
 
-export default function EmployeeList() {
-  const data = raw as Department[];
-
-  const rank = new Map(ORDER.map((name, i) => [name, i]));
-  const sorted = [...data].sort((a, b) => {
-    const ai = rank.get(a.department) ?? 999;
-    const bi = rank.get(b.department) ?? 999;
-    if (ai !== bi) return ai - bi;
-    return a.department.localeCompare(b.department);
-  });
+  const populateDepartmentEmployees = () => {
+    for (const department of Object.keys(employeesJson.departments)) {
+      const departmentEmployee: EmployeeDepartment = {
+        department,
+        employees: [],
+      };
+      for (const employee of (employeesJson.departments as any)[department]) {
+        departmentEmployee.employees.push(employee);
+      }
+      departmentsEmployees.push(departmentEmployee);
+    }
+  };
+  populateDepartmentEmployees();
 
   return (
-    <section id="employee-directory">
-      {sorted.map((dept) => (
-        <section key={dept.department} className="card">
-          <h4>{dept.department}</h4>
-          <ul>
-            {dept.employees.map((name, i) => (
-              <li key={i}>{name}</li>
-            ))}
-          </ul>
-        </section>
-      ))}
-    </section>
+    <main>
+      <h2>Employee Directory</h2>
+
+      <div id="employee-list">
+        {departmentsEmployees.map((x, i) => (
+          <div key={i}>
+            <h2>{x.department}</h2>
+            <ul>
+              <li className="employee">
+                {x.employees.map((y, i) => (
+                  <div key={i}>{y}</div>
+                ))}
+              </li>
+            </ul>
+          </div>
+        ))}
+      </div>
+    </main>
   );
 }
