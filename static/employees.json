@@ -1,62 +1,42 @@
-[
-  {
-    "department": "Administration",
-    "employees": ["Zoë Robins", "Madeleine Madden"]
-  },
-  { "department": "Audit", "employees": ["Josha Sadowski", "Kate Fleetwood"] },
-  {
-    "department": "Banking Operations",
-    "employees": [
+{
+  "departments": {
+    "Administration": ["Zoë Robins", "Madeleine Madden"],
+    "Audit": ["Josha Sadowski", "Kate Fleetwood"],
+    "BankingOperations": [
       "Priyanka Bose",
       "Hammed Animashaun",
       "Álvaro Morte",
       "Taylor Napier",
       "Alan Simmonds"
-    ]
-  },
-  {
-    "department": "Communications",
-    "employees": ["Gil Cardinal", "Richard J. Lewis"]
-  },
-  {
-    "department": "Corporate Services",
-    "employees": ["Randy Bradshaw", "Tracey Cook", "Lubomir Mykytiuk"]
-  },
-  {
-    "department": "Facilities",
-    "employees": [
+    ],
+    "Communications": ["Gil Cardinal", "Richard J. Lewis"],
+    "CorporateServices": ["Randy Bradshaw", "Tracey Cook", "Lubomir Mykytiuk"],
+    "Facilities": [
       "Dakota House",
       "Lori Lea Okemah",
       "Renae Morrisseau",
       "Rick Belcourt"
-    ]
-  },
-  {
-    "department": "Financial Services",
-    "employees": [
+    ],
+    "FinancialServices": [
       "Selina Hanusa",
       "Buffy Gaudry",
       "Shaneen Ann Fox",
       "Allan Little",
       "Danny Rabbit"
-    ]
-  },
-  {
-    "department": "Human Resources",
-    "employees": [
-      "Jesse Ed Azure",
+    ],
+    "HumanResources": [
+      "Jesse Ed aure",
       "Stacy Da Silva",
       "Vladimír Valenta",
       "Samone Sayeses-Whitney",
       "Paul Coeur"
-    ]
-  },
-  {
-    "department": "Information Technology",
-    "employees": [
+    ],
+    "InformationTechnology": [
       "Graham Greene",
       "Sandika Evergreen",
-      "Jennifer Rodriguez",
+      "Jennifer Rodriguez"
+    ],
+    "ItTechnician": [
       "Aiyana Littlebear",
       "Inara Thunderbird",
       "Kaya Runningbrook",
@@ -69,4 +49,4 @@
       "Onatah Redhawk"
     ]
   }
-]
+}
