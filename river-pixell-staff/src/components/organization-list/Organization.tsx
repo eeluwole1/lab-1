@@ -1,5 +1,7 @@
 import organizationJson from "../../data/organization.json";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
+
 interface LeadershipRole {
   role: string;
   description: (string | null)[];
@@ -15,8 +17,8 @@ export function Organization() {
         description: [],
       };
 
-      for (const person of (organizationJson as any).role[role]) {
-        leadershipRole.description.push(person);
+      for (const people of (organizationJson as any).role[role]) {
+        leadershipRole.description.push(people);
       }
 
       leadershipRoles.push(leadershipRole);
@@ -27,7 +29,7 @@ export function Organization() {
 
   return (
     <main>
-      <h2>Organization Leadership</h2>
+      <h2>Management Leadership Roles</h2>
 
       <div id="organization-list">
         {leadershipRoles.map((x, i) => (
