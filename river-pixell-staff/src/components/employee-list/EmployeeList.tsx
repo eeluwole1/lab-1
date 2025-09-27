@@ -1,10 +1,7 @@
 import employeesJson from "../../data/employees.json";
 import { useEffect, useState } from "react";
+import type { EmployeeDepartment } from "../../types/Roles";
 
-interface EmployeeDepartment {
-  department: string;
-  employees: string[];
-}
 
 export function EmployeeList() {
   const departmentsEmployees = new Array<EmployeeDepartment>();
@@ -47,31 +44,49 @@ export function EmployeeList() {
 
     }, []);
 
+  const sLower = searchTerm.toLowerCase();
+  const Roles =
+    filterValue === "All"
+      ? departmentsEmployees
+      : departmentsEmployees.filter((deptRole) => deptRole.department === filterValue);
+
+  const bySearch = Roles
+    .map((row) => ({
+      department: row.department,
+      employees: row.employees.filter((employeeNames) => employeeNames.toLowerCase().includes(sLower)),
+    }))
+    .filter(
+      (row) =>
+        row.department.toLowerCase().includes(sLower) || row.employees.length > 0
+    );
+  const roleResult = bySearch.reduce((allRow, deptRow) => allRow + deptRow.employees.length, 0);
+
   return (
     <main>
       <h2>Employee Directory</h2>
 
       <div style={{ display: "flex", gap: 12, margin: "6px 0 10px" }}>
         <input
-          placeholder="Search"
-          onChange={(e) => onSearchUpdate(e.target.value)}
+          value={searchTerm}
+          placeholder="Search by name or department"
+          onChange={(employeeName) => onSearchUpdate(employeeName.target.value)}
           style={{ flex: 1 }}
         />
-        <select onChange={(e) => onFilterChange(e.target.value)}>
-          {filterOptions.map((x) => (
-            <option key={x}>{x}</option>
+        <select onChange={(employeeName) => onFilterChange(employeeName.target.value)}>
+          {filterOptions.map((deptRow) => (
+            <option key={deptRow}>{deptRow}</option>
           ))}
         </select>
       </div>
 
       <div id="employee-list">
-        {departmentsEmployees.map((x, i) => (
-          <div key={i}>
-            <h2>{x.department}</h2>
+        {bySearch.map((deptRow, dept) => (
+          <div key={dept}>
+            <h2>{deptRow.department}</h2>
             <ul>
               <li className="employee">
-                {x.employees.map((y, i) => (
-                  <div key={i}>{y}</div>
+                {deptRow.employees.map((employeeName, employeeIndex) => (
+                  <div key={employeeIndex}>{employeeName}</div>
                 ))}
               </li>
             </ul>

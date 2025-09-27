@@ -32,13 +32,13 @@ export function Organization() {
       <h2>Management Leadership Roles</h2>
 
       <div id="organization-list">
-        {leadershipRoles.map((x, i) => (
-          <div key={i}>
-            <h3>{x.role}</h3>
+        {leadershipRoles.map((orgDesc, orgIndex) => (
+          <div key={orgIndex}>
+            <h3>{orgDesc.role}</h3>
             <ul>
               <li className="leadership">
-                {x.description.map((y, j) => (
-                  <div key={j}>{y ?? "Vacant"}</div>
+                {orgDesc.description.map((leadershipDesc, leadershipIndex) => (
+                  <div key={leadershipIndex}>{leadershipDesc ?? "Vacant"}</div>
                 ))}
               </li>
             </ul>
