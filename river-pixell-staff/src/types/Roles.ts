@@ -4,12 +4,7 @@ export interface EmployeeDepartment {
     employees: string[];
 }
 
-export interface EmployeeDepartment {
-  department: string;
-  employees: string[];
-}
-
 export interface RoleEntry {
   role: string;
-  occupants: (string | null)[];
+  description: (string | null)[];
 }
