@@ -16,9 +16,9 @@ export function getEmployees() {
 }
 
 export function getEmployeeById(employeeId: string): Employee {
-  const found = employeeData.find((e) => e.id === employeeId);
-  if (!found) throw new Error(`Failed to fetch employee with ${employeeId}`);
-  return found;
+  const foundEmployee = employeeData.find((e) => e.id === employeeId);
+  if (!foundEmployee) throw new Error(`Failed to fetch employee with ${employeeId}`);
+  return foundEmployee;
 }
 
 export async function createEmployee(employee: Employee) {
@@ -27,17 +27,17 @@ export async function createEmployee(employee: Employee) {
 }
 
 export async function updateEmployee(employee: Employee) {
-  const idx = employeeData.findIndex((e) => e.id === employee.id);
-  if (idx === -1) {
+  const foundEmployeeIndex = employeeData.findIndex((e) => e.id === employee.id);
+  if (foundEmployeeIndex === -1) {
     throw new Error(`Failed to update employee with ${employee.id}`);
   }
-  employeeData[idx] = employee;
-  return employeeData[idx];
+  employeeData[foundEmployeeIndex] = employee;
+  return employeeData[foundEmployeeIndex];
 }
 
 export async function updateEmployeeDepartment(employeeId: string, department: string) {
-  const found = employeeData.find((e) => e.id === employeeId);
-  if (!found) throw new Error(`Failed to fetch employee with ${employeeId}`);
-  found.department = department;
-  return found;
+  const foundEmployee = employeeData.find((e) => e.id === employeeId);
+  if (!foundEmployee) throw new Error(`Failed to fetch employee with ${employeeId}`);
+  foundEmployee.department = department;
+  return foundEmployee;
 }
