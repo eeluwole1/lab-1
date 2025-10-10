@@ -30,9 +30,9 @@ export function EmployeeForm({ formMode, employeeId }: EmployeeFormProps) {
 
   useEffect(() => {
     if (formMode === "edit" && employeeId) {
-      const edited = employees.find((e) => e.id === employeeId);
-      if (edited) {
-        setEmployeeData(edited);
+      const editedEmployee = employees.find((e) => e.id === employeeId);
+      if (editedEmployee) {
+        setEmployeeData(editedEmployee);
       }
     }
   }, [employees, formMode, employeeId]);
@@ -58,21 +58,20 @@ export function EmployeeForm({ formMode, employeeId }: EmployeeFormProps) {
   };
 
   const onSubmit = async () => {
-    const validationErrors = await EmployeeService.validateEmployee(employeeData);
-    setErrors(validationErrors);
+    const employeeErrors = await EmployeeService.validateEmployee(employeeData);
+    setErrors(employeeErrors);
 
-    if (validationErrors.size === 0) {
+    if (employeeErrors.size == 0) {
       let toastMessage = `Successfully created new employee ${employeeData.name}!`;
-      let id = employeeData.id;
+      let employeeId = employeeData.id;
 
-      if (formMode === "create") {
-   
-        const created = await EmployeeService.createNewEmployee({
-          ...employeeData,
+      if (formMode == "create") {
+        const newEmployee = await EmployeeService.createNewEmployee(employeeData);
 
-          id: crypto.randomUUID ? crypto.randomUUID() : `${Date.now()}`,
-        });
-        if (created) id = created.id;
+        if (newEmployee) {
+            employeeId = newEmployee.id;
+        }
+
       } else {
  
         toastMessage = "Successfully updated employee!";

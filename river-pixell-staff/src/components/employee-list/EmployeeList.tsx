@@ -1,27 +1,18 @@
-// src/components/employee-list/EmployeeList/EmployeeList.tsx
 import type { Employee } from "../../types/Employee";
-import { EmployeeDepartmentSection } from "../employee-list/EmployeeDepartmentSection";
+import { EmployeeItem } from "../employee-list/EmployeeItem";
 
-interface Props {
+interface EmployeeListProps {
   employees: Employee[];
   onMoveEmployee?: (id: string, toDept: string) => void;
 }
 
-export function EmployeeList({ employees, onMoveEmployee }: Props) {
-  // group by department for sectioned rendering
-  const byDept = employees.reduce<Record<string, Employee[]>>((acc, e) => {
-    acc[e.department] ??= [];
-    acc[e.department].push(e);
-    return acc;
-  }, {});
-
+export function EmployeeList({ employees, onMoveEmployee }: EmployeeListProps) {
   return (
-    <section>
-      {Object.entries(byDept).map(([dept, emps]) => (
-        <EmployeeDepartmentSection
-          key={dept}
-          department={dept}
-          employees={emps}
+    <section className="employee-list">
+      {employees.map((e) => (
+        <EmployeeItem
+          key={e.id}
+          employee={e}
           onMoveEmployee={onMoveEmployee}
         />
       ))}
