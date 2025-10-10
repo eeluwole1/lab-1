@@ -1,5 +1,5 @@
 import type { Employee } from "../../types/Employee";
-import { EmployeeItem } from "../employee-list/EmployeeItem";
+import { EmployeeItem } from "./employeeItem/EmployeeItem";
 
 interface EmployeeListProps {
   employees: Employee[];

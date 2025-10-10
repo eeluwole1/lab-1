@@ -1,7 +1,7 @@
-import { Input } from "../ui/Input";
-import { Select } from "../ui/Select";
-import { EmployeeList } from "./EmployeeList";
-import { useEmployees } from "../../hooks/useEmployees";
+import { Input } from "../../ui/Input";
+import { Select } from "../../ui/Select";
+import { EmployeeList } from "../EmployeeList";
+import { useEmployees } from "../../../hooks/useEmployees";
 
 
 
@@ -15,22 +15,22 @@ export function EmployeesPage() {
   } = useEmployees([], null);
 
   return (
-    <div className="p-16">
-      <div className="flex justify-between gap-6">
+    <div className="pageWrap">
+      <div className="toolbar">
         <Input
-          className="w-full"
+          className="toolGrow"
           onChange={(eEmployee) => setSearchTerm(eEmployee.target.value)}
           placeholder="Search by name or department"
         />
-        <Select className="w-40" onChange={(eEmployee) => setDepartment(eEmployee.target.value)}>
+        <Select className="toolSelect" onChange={(eEmployee) => setDepartment(eEmployee.target.value)}>
           {filterOptions.map((opt) => (
             <option key={opt}>{opt}</option>
           ))}
         </Select>
       </div>
 
-      <span>{filteredEmployees.length} results</span>
-
+     <div className="resultsLine">{filteredEmployees.length} results</div>
+     <section className="employeeGrid"></section>
       <EmployeeList
         employees={filteredEmployees}           
         onMoveEmployee={updateEmployeeDepartment} 

@@ -92,14 +92,14 @@ export function EmployeeForm({ formMode, employeeId }: EmployeeFormProps) {
   };
 
   return (
-    <section className="my-4 py-4 flex flex-col">
-      <span className="text-2xl">
+    <section className="formWrap">
+      <span className="Title">
         {formMode === "create" ? "Create" : "Edit"} Employee
       </span>
 
-      <form id="form" className="flex flex-col py-4 gap-4">
-        <div className="flex flex-col gap-2 flex-grow">
-          <div className="flex flex-col">
+      <form id="form" className="form">
+        <div className="column">
+          <div className="label">
             <span>Employee Name</span>
             <Input
               placeholder="Employee Name"
@@ -108,14 +108,14 @@ export function EmployeeForm({ formMode, employeeId }: EmployeeFormProps) {
               onChange={(e) => handleFormChange("name", e.target.value)}
             />
             {errors.has("name") && (
-              <span className="text-red-500 font-semibold">
+              <span className="error">
                 {errors.get("name")}
               </span>
             )}
           </div>
 
 
-          <div className="flex flex-col">
+          <div className="column">
             <span>Department</span>
             <Select
               name="department"
@@ -132,13 +132,13 @@ export function EmployeeForm({ formMode, employeeId }: EmployeeFormProps) {
               ))}
             </Select>
             {errors.has("department") && (
-              <span className="text-red-500 font-semibold">
+              <span className="error">
                 {errors.get("department")}
               </span>
             )}
           </div>
 
-          <div className="flex justify-start gap-4 mt-8">
+          <div className="actions">
             <Button
               type="button"
               onClick={onSubmit}

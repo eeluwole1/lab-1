@@ -40,3 +40,76 @@ ul {
   font-weight: 600;
   border-bottom: 2px solid #2563eb;
 }
+
+
+.pageWrap {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.toolbar {
+  display: flex;
+  gap: 0.75rem;     
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.toolGrow { flex: 1; }
+.toolSelect { width: 10rem; }
+
+.resultsLine {
+  margin: 0 0 0.75rem 0;
+  color: #444;
+  font-size: 0.95rem;
+}
+
+.employeeGrid {
+  display: grid;
+  grid-template-columns: 1fr; 
+  gap: 6px;
+}
+
+
+.employeeRow {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  background: #fafafa;
+}
+
+.employeeRow:hover {
+  background: #f5f7fb;
+  border-color: #d7dbe6;
+}
+
+.employeeName {
+  color: #111827;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+.deptSelect {
+  max-width: 220px;
+  padding: 4px 6px;
+  font: inherit;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  background: #fff;
+}
+
+
+input[type="text"],
+select {
+  border: 1.5px solid #cbd5e1;
+  border-radius: 6px;
+  padding: 6px 8px;
+  background: #fff;
+  font: inherit;
+}

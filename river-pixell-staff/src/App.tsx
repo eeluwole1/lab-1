@@ -4,7 +4,7 @@ import { Route, Routes, Navigate, BrowserRouter } from "react-router";
 import Nav from "./components/layout/nav/Nav"; 
 import HeaderBar from "./components/header/Header";
 import Footer from "./components/layout/footer/Footer";
-import { EmployeesPage } from "./components/employee-list/EmployeesPage";
+import { EmployeesPage } from "./components/employee-list/employeeP/EmployeesPage";
 import { Organization } from "./components/organization-list/Organization";
 import { ToastContainer } from "react-toastify";
 

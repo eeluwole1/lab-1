@@ -1,4 +1,4 @@
-import type { Employee } from "../../types/Employee";
+import type { Employee } from "../../../types/Employee";
 
 interface EmployeeItemProps { 
   employee: Employee;
@@ -8,10 +8,11 @@ interface EmployeeItemProps {
 export function EmployeeItem({employee, onMoveEmployee } :
 EmployeeItemProps) {
   return (
-    <div className="flex items-center gap-3 py-1">
-      <span className="flex-1">{employee.name} — {employee.department}</span>
+    <div className="employeeRow">
+      <span className="employeeName">{employee.name} — {employee.department}</span>
       {onMoveEmployee && (
         <select
+          className="deptSelect"
           defaultValue={employee.department}
           onChange={(ev) => onMoveEmployee(employee.id, ev.target.value)}
         >
