@@ -1,16 +1,17 @@
 import * as employeeRepo from "../apis/employeeRepo";
 import type { Employee } from "../types/Employee";
 
-export async function fetchEmployees(): Promise<Employee[]> {
-  return employeeRepo.getEmployees();
+export async function fetchEmployees() {
+    const Employee = await employeeRepo.getEmployees();
+    return Employee;
 }
 
 export async function createNewEmployee(employee: Employee) {
-  return employeeRepo.createEmployee(employee);
+  return await employeeRepo.createEmployee(employee);
 }
 
 export async function updateEmployee(employee: Employee) {
-  return employeeRepo.updateEmployee(employee);
+  return await employeeRepo.updateEmployee(employee);
 }
 
 export async function moveEmployee(employeeId: string, toDepartment: string) {

@@ -42,7 +42,7 @@ const updateEmployeeDepartment = async (employeeId: string, department: string) 
 };
 
   const filterOptions = useMemo(() => {
-    const uniqueDepts = Array.from(new Set(employees.map((e) => e.department)));
+    const uniqueDepts = Array.from(new Set(employees.map((eEmployee) => eEmployee.department)));
     return ["All", ...uniqueDepts];
   }, [employees]);
 
@@ -76,7 +76,7 @@ const updateEmployeeDepartment = async (employeeId: string, department: string) 
 
   useEffect(() => {
     fetchEmployees();
-    
+
   }, [...dependencies]);
 
   return {
