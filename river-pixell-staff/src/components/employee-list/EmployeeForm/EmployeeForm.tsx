@@ -22,13 +22,11 @@ const DEFAULT_EMPLOYEE: Employee = {
 
 export function EmployeeForm({ formMode, employeeId }: EmployeeFormProps) {
   const { employees } = useEmployees([], null);
-
   const [employeeData, setEmployeeData] = useState<Employee>(DEFAULT_EMPLOYEE);
   const [errors, setErrors] = useState<Map<string, string>>(new Map());
-
   const departmentOptions = Object.keys(employeesJson.departments ?? {});
-
-  const navigate = useNavigate();
+  let navigate = useNavigate();
+  
 
   useEffect(() => {
     if (formMode === "edit" && employeeId) {
@@ -140,7 +138,6 @@ export function EmployeeForm({ formMode, employeeId }: EmployeeFormProps) {
               </span>
             )}
           </div>
-
 
           <div className="flex justify-start gap-4 mt-8">
             <Button
